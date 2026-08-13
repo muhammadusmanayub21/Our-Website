@@ -1512,7 +1512,7 @@ import ServiceGrid from '@/components/services/ServiceGrid'
 
 export default function ServiceStrip() {
   return (
-    <section className="bg-thynkteck-black py-20 sm:py-28">
+    <section className="bg-thynkteck-soft-black py-20 sm:py-28">
       <div className="container mx-auto px-4 sm:px-6">
         <SectionHeading
           eyebrow="What we do"
@@ -1540,7 +1540,7 @@ export default function FeaturedWork() {
   const featured = projects.slice(0, 3)
 
   return (
-    <section className="bg-thynkteck-soft-black py-20 sm:py-28">
+    <section className="bg-thynkteck-black py-20 sm:py-28">
       <div className="container mx-auto px-4 sm:px-6">
         <SectionHeading eyebrow="Selected work" title="Recent projects" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
@@ -1585,7 +1585,7 @@ const stats = [
 
 export default function StatsBar() {
   return (
-    <section className="bg-thynkteck-black py-16 sm:py-20 border-y border-white/10">
+    <section className="bg-thynkteck-soft-black py-16 sm:py-20 border-y border-white/10">
       <div className="container mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
         {stats.map((stat) => (
           <StatCounter key={stat.label} {...stat} />
@@ -1608,7 +1608,7 @@ import BentoCard from '@/components/ui/BentoCard'
 
 export default function TestimonialsSection() {
   return (
-    <section className="bg-thynkteck-soft-black py-20 sm:py-28">
+    <section className="bg-thynkteck-black py-20 sm:py-28">
       <div className="container mx-auto px-4 sm:px-6">
         <SectionHeading eyebrow="Client feedback" title="What clients say" align="center" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
