@@ -46,7 +46,12 @@ export async function POST(request: Request) {
   const resend = new Resend(apiKey)
 
   try {
-    await resend.emails.send({
+    // resend@3.x never throws on a failed send: Emails.send() resolves to
+    // { data: null, error } for API errors AND network failures alike (the
+    // SDK's own fetchRequest catch converts thrown errors into that shape).
+    // So the returned `error` must be checked explicitly — the try/catch
+    // below only covers genuine exceptions the SDK does not swallow.
+    const { error } = await resend.emails.send({
       from: 'Thynkteck Website <onboarding@resend.dev>',
       to: toEmail,
       reply_to: typedData.email,
@@ -62,6 +67,15 @@ export async function POST(request: Request) {
         .filter(Boolean)
         .join('\n'),
     })
+
+    if (error) {
+      console.error('Resend send failed:', error)
+      return NextResponse.json(
+        { success: false, errors: { message: 'Failed to send message. Please try again.' } },
+        { status: 502 }
+      )
+    }
+
     return NextResponse.json({ success: true })
   } catch {
     return NextResponse.json(

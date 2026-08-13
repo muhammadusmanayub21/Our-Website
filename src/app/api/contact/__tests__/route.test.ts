@@ -61,6 +61,22 @@ describe('POST /api/contact', () => {
     expect(sendMock).not.toHaveBeenCalled()
   })
 
+  // The real resend@3.x SDK never rejects — it resolves to { data: null, error }
+  // for API errors and network failures alike. This is the path that actually
+  // happens in production.
+  it('returns 502 when the email provider returns an error result', async () => {
+    sendMock.mockResolvedValue({
+      data: null,
+      error: { name: 'application_error', message: 'x' },
+    })
+    const response = await POST(makeRequest(validBody))
+    const json = await response.json()
+    expect(response.status).toBe(502)
+    expect(json.success).toBe(false)
+    expect(sendMock).toHaveBeenCalledTimes(1)
+  })
+
+  // Defense in depth: the outer try/catch still covers a genuine throw.
   it('returns 502 when the email provider throws', async () => {
     sendMock.mockRejectedValue(new Error('provider down'))
     const response = await POST(makeRequest(validBody))
