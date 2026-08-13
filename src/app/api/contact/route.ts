@@ -3,9 +3,33 @@ import { Resend } from 'resend'
 import { validateContactForm, ContactFormData } from '@/lib/contactValidation'
 
 export async function POST(request: Request) {
-  const data = (await request.json()) as ContactFormData
+  let data: unknown
+  try {
+    data = await request.json()
+  } catch {
+    return NextResponse.json(
+      { success: false, errors: { message: 'Invalid JSON in request body.' } },
+      { status: 400 }
+    )
+  }
 
-  const errors = validateContactForm(data)
+  // Runtime shape check: ensure required fields are present and have correct types
+  if (
+    typeof data !== 'object' ||
+    data === null ||
+    typeof (data as Record<string, unknown>).name !== 'string' ||
+    typeof (data as Record<string, unknown>).email !== 'string' ||
+    typeof (data as Record<string, unknown>).message !== 'string'
+  ) {
+    return NextResponse.json(
+      { success: false, errors: { message: 'Missing or invalid required fields: name, email, message must be strings.' } },
+      { status: 400 }
+    )
+  }
+
+  const typedData = data as ContactFormData
+
+  const errors = validateContactForm(typedData)
   if (Object.keys(errors).length > 0) {
     return NextResponse.json({ success: false, errors }, { status: 400 })
   }
@@ -25,15 +49,15 @@ export async function POST(request: Request) {
     await resend.emails.send({
       from: 'Thynkteck Website <onboarding@resend.dev>',
       to: toEmail,
-      reply_to: data.email,
-      subject: `New inquiry from ${data.name}`,
+      reply_to: typedData.email,
+      subject: `New inquiry from ${typedData.name}`,
       text: [
-        `Name: ${data.name}`,
-        `Email: ${data.email}`,
-        data.company ? `Company: ${data.company}` : null,
-        data.service ? `Service: ${data.service}` : null,
+        `Name: ${typedData.name}`,
+        `Email: ${typedData.email}`,
+        typedData.company ? `Company: ${typedData.company}` : null,
+        typedData.service ? `Service: ${typedData.service}` : null,
         '',
-        data.message,
+        typedData.message,
       ]
         .filter(Boolean)
         .join('\n'),

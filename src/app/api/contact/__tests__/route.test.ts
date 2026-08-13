@@ -68,4 +68,36 @@ describe('POST /api/contact', () => {
     expect(response.status).toBe(502)
     expect(json.success).toBe(false)
   })
+
+  it('returns 400 for malformed JSON', async () => {
+    const response = await POST(
+      new Request('http://localhost/api/contact', {
+        method: 'POST',
+        body: 'not valid json {',
+      })
+    )
+    const json = await response.json()
+    expect(response.status).toBe(400)
+    expect(json.success).toBe(false)
+    expect(json.errors.message).toBeDefined()
+    expect(sendMock).not.toHaveBeenCalled()
+  })
+
+  it('returns 400 when required fields are missing', async () => {
+    const response = await POST(makeRequest({ ...validBody, name: undefined }))
+    const json = await response.json()
+    expect(response.status).toBe(400)
+    expect(json.success).toBe(false)
+    expect(json.errors.message).toBeDefined()
+    expect(sendMock).not.toHaveBeenCalled()
+  })
+
+  it('returns 400 when required field has wrong type', async () => {
+    const response = await POST(makeRequest({ ...validBody, email: 123 }))
+    const json = await response.json()
+    expect(response.status).toBe(400)
+    expect(json.success).toBe(false)
+    expect(json.errors.message).toBeDefined()
+    expect(sendMock).not.toHaveBeenCalled()
+  })
 })
