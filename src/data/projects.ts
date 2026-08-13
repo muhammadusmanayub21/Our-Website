@@ -14,7 +14,7 @@ export const projects: Project[] = [
     approach: 'We built a single web platform with a shared data layer, custom admin tooling, and a public storefront on top of it.',
     result: 'Stock discrepancies dropped and the team now manages every location from one dashboard.',
     techStack: ['Next.js', 'PostgreSQL', 'Node.js'],
-    tags: ['web', 'app'],
+    tags: ['web', 'app', 'software'],
     gallery: [
       { src: '/images/work/northwind-retail-platform.svg', alt: 'Northwind Retail Platform dashboard' },
     ],
