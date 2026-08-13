@@ -5,8 +5,9 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'DevSphere - Design & Development Studio',
-  description: 'Professional design and development studio',
+  title: 'Thynkteck — Web, App, AI & Design Agency',
+  description:
+    'Thynkteck is a full-service digital agency: web & app development, UI/UX & branding, AI/automation, IT consulting, Shopify and WordPress development.',
 }
 
 export default function RootLayout({
@@ -16,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} bg-thynkteck-black text-white`}>
+        {children}
+      </body>
     </html>
   )
 }

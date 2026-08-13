@@ -9,8 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'devsphere-green': '#9EFF00',
-        'devsphere-dark-green': '#7ACC00',
+        'thynkteck-blue': '#0B35FA',
+        'thynkteck-black': '#000000',
+        'thynkteck-soft-black': '#1A1B1B',
       },
     },
   },

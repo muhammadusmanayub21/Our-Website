@@ -1,17 +1,20 @@
 {
-  "name": "devsphere-website",
+  "name": "thynkteck-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest run"
   },
   "dependencies": {
     "next": "14.2.5",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "framer-motion": "^11.3.0",
+    "resend": "^3.5.0"
   },
   "devDependencies": {
     "typescript": "^5",
@@ -22,6 +25,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "autoprefixer": "^10.0.1",
-    "postcss": "^8"
+    "postcss": "^8",
+    "vitest": "^2.0.5"
   }
 }
