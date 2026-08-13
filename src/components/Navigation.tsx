@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { services } from '@/data/services'
+import { projects } from '@/data/projects'
 
 const navItems = [
   { name: 'About', href: '/about' },
@@ -12,7 +13,11 @@ const navItems = [
     href: '/services',
     children: services.map((s) => ({ name: s.title, href: `/services/${s.slug}` })),
   },
-  { name: 'Work', href: '/work' },
+  {
+    name: 'Work',
+    href: '/work',
+    children: projects.map((p) => ({ name: p.title, href: `/work/${p.slug}` })),
+  },
   { name: 'Blog', href: '/blog' },
 ]
 
