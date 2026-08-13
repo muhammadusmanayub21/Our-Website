@@ -22,9 +22,9 @@ const Footer = () => {
           Have a project in mind?
         </h2>
         <p className="text-base sm:text-lg text-white/70 mb-8 max-w-2xl mx-auto">
-          Tell us what you're building — we'll get back to you within one business day.
+          Tell us what you&apos;re building — we&apos;ll get back to you within one business day.
         </p>
-        <Button href="/contact">Let's talk</Button>
+        <Button href="/contact">Let&apos;s talk</Button>
       </div>
 
       <div className="relative border-y border-white/10 py-6 mb-12">
