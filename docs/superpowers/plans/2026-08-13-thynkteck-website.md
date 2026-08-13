@@ -1707,7 +1707,7 @@ import BentoCard from '@/components/ui/BentoCard'
 
 export default function TeamGrid() {
   return (
-    <section className="bg-thynkteck-soft-black py-20 sm:py-28">
+    <section className="bg-thynkteck-black py-20 sm:py-28">
       <div className="container mx-auto px-4 sm:px-6">
         <SectionHeading eyebrow="Our team" title="The people behind the work" />
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
@@ -1743,7 +1743,7 @@ const values = [
 
 export default function ValuesGrid() {
   return (
-    <section className="bg-thynkteck-black py-20 sm:py-28">
+    <section className="bg-thynkteck-soft-black py-20 sm:py-28">
       <div className="container mx-auto px-4 sm:px-6">
         <SectionHeading eyebrow="How we work" title="What we optimize for" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -1926,7 +1926,7 @@ export default function ServiceDetailTemplate({ service, relatedProjects }: Serv
       </section>
 
       {relatedProjects.length > 0 && (
-        <section className="bg-thynkteck-soft-black py-20 sm:py-28">
+        <section className="bg-thynkteck-soft-black py-20 sm:py-28 border-b border-white/10">
           <div className="container mx-auto px-4 sm:px-6">
             <SectionHeading eyebrow="Related work" title="Recent projects in this area" />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -2188,7 +2188,7 @@ export default function ProjectDetailTemplate({ project, nextProject }: ProjectD
         </div>
       </section>
 
-      <section className="bg-thynkteck-black py-16 sm:py-20">
+      <section className="bg-thynkteck-black py-16 sm:py-20 border-b border-white/10">
         <div className="container mx-auto px-4 sm:px-6">
           <SectionHeading eyebrow="Tech stack" title="Built with" />
           <div className="flex flex-wrap gap-3">
