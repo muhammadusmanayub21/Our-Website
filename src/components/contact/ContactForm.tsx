@@ -2,7 +2,15 @@
 
 import { FormEvent, useState } from 'react'
 import { services } from '@/data/services'
-import { validateContactForm, ContactFormData, ContactFormErrors } from '@/lib/contactValidation'
+import {
+  validateContactForm,
+  ContactFormData,
+  ContactFormErrors,
+  MAX_NAME_LENGTH,
+  MAX_EMAIL_LENGTH,
+  MAX_COMPANY_LENGTH,
+  MAX_MESSAGE_LENGTH,
+} from '@/lib/contactValidation'
 
 type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -18,6 +26,9 @@ export default function ContactForm() {
   const [data, setData] = useState<ContactFormData>(initialData)
   const [errors, setErrors] = useState<ContactFormErrors>({})
   const [status, setStatus] = useState<SubmitStatus>('idle')
+  // Honeypot: hidden from sighted users and assistive tech, so only a naive
+  // bot that fills every input will populate it.
+  const [honeypot, setHoneypot] = useState('')
 
   const handleChange = (field: keyof ContactFormData) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -27,6 +38,15 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
+
+    // Honeypot tripped — show the normal success state without calling the
+    // API, so the bot gets no signal that it was rejected and no send is billed.
+    if (honeypot) {
+      setStatus('success')
+      setData(initialData)
+      return
+    }
+
     const validationErrors = validateContactForm(data)
     setErrors(validationErrors)
     if (Object.keys(validationErrors).length > 0) return
@@ -63,6 +83,7 @@ export default function ContactForm() {
           id="name"
           value={data.name}
           onChange={handleChange('name')}
+          maxLength={MAX_NAME_LENGTH}
           className="w-full rounded-lg bg-thynkteck-soft-black border border-white/10 px-4 py-3 text-white focus:border-thynkteck-blue outline-none"
         />
         {errors.name && <p className="mt-1 text-sm text-red-400">{errors.name}</p>}
@@ -75,6 +96,7 @@ export default function ContactForm() {
           type="email"
           value={data.email}
           onChange={handleChange('email')}
+          maxLength={MAX_EMAIL_LENGTH}
           className="w-full rounded-lg bg-thynkteck-soft-black border border-white/10 px-4 py-3 text-white focus:border-thynkteck-blue outline-none"
         />
         {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email}</p>}
@@ -86,6 +108,7 @@ export default function ContactForm() {
           id="company"
           value={data.company}
           onChange={handleChange('company')}
+          maxLength={MAX_COMPANY_LENGTH}
           className="w-full rounded-lg bg-thynkteck-soft-black border border-white/10 px-4 py-3 text-white focus:border-thynkteck-blue outline-none"
         />
       </div>
@@ -114,6 +137,7 @@ export default function ContactForm() {
           rows={5}
           value={data.message}
           onChange={handleChange('message')}
+          maxLength={MAX_MESSAGE_LENGTH}
           className="w-full rounded-lg bg-thynkteck-soft-black border border-white/10 px-4 py-3 text-white focus:border-thynkteck-blue outline-none"
         />
         {errors.message && <p className="mt-1 text-sm text-red-400">{errors.message}</p>}
@@ -130,6 +154,25 @@ export default function ContactForm() {
       >
         {status === 'submitting' ? 'Sending…' : 'Send message'}
       </button>
+
+      {/*
+        Honeypot. Positioned off-screen rather than display:none, because some
+        bots skip fields that are not rendered at all. Hidden from assistive
+        tech and taken out of the tab order so real users never reach it. Last
+        child so the form's space-y rhythm is unchanged.
+      */}
+      <div className="absolute w-px h-px overflow-hidden -left-[9999px]" aria-hidden="true">
+        <label htmlFor="website">Do not fill this in</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
     </form>
   )
 }
