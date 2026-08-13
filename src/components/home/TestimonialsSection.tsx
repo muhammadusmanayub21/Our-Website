@@ -4,7 +4,7 @@ import BentoCard from '@/components/ui/BentoCard'
 
 export default function TestimonialsSection() {
   return (
-    <section className="bg-thynkteck-soft-black py-20 sm:py-28">
+    <section className="bg-thynkteck-black py-20 sm:py-28">
       <div className="container mx-auto px-4 sm:px-6">
         <SectionHeading eyebrow="Client feedback" title="What clients say" align="center" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

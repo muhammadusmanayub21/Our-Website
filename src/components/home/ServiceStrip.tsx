@@ -3,7 +3,7 @@ import ServiceGrid from '@/components/services/ServiceGrid'
 
 export default function ServiceStrip() {
   return (
-    <section className="bg-thynkteck-black py-20 sm:py-28">
+    <section className="bg-thynkteck-soft-black py-20 sm:py-28">
       <div className="container mx-auto px-4 sm:px-6">
         <SectionHeading
           eyebrow="What we do"

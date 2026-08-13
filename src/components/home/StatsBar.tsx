@@ -9,7 +9,7 @@ const stats = [
 
 export default function StatsBar() {
   return (
-    <section className="bg-thynkteck-black py-16 sm:py-20 border-y border-white/10">
+    <section className="bg-thynkteck-soft-black py-16 sm:py-20 border-y border-white/10">
       <div className="container mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
         {stats.map((stat) => (
           <StatCounter key={stat.label} {...stat} />
