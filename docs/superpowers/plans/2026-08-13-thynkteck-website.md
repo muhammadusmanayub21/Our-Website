@@ -1397,6 +1397,7 @@ git commit -m "feat: rebuild footer with tech-stack marquee, drop fabricated cli
 ### Task 7: Homepage
 
 **Files:**
+- Create: `src/components/services/ServiceGrid.tsx`
 - Create: `src/components/home/Hero.tsx`
 - Create: `src/components/home/ServiceStrip.tsx`
 - Create: `src/components/home/FeaturedWork.tsx`
@@ -1407,7 +1408,7 @@ git commit -m "feat: rebuild footer with tech-stack marquee, drop fabricated cli
 
 **Interfaces:**
 - Consumes: `services`, `projects`, `testimonials` (Task 2), `Button`, `SectionHeading`, `BentoCard`, `StatCounter`, `CircuitMotif` (Task 4), `Navigation` (Task 5), `Footer` (Task 6).
-- Produces: `src/app/page.tsx` renders the full homepage — no other task depends on this task's internals.
+- Produces: `<ServiceGrid>` (no props — renders the bento grid of all 7 services, each linking to its `/services/[slug]` page) from `@/components/services/ServiceGrid` — reused by Task 9's `/services` overview page so the grid markup exists in exactly one place. `src/app/page.tsx` renders the full homepage — no other task depends on this task's other internals.
 
 - [ ] **Step 1: Create `Hero.tsx` with the circuit/particle animation**
 
@@ -1478,34 +1479,47 @@ export default function Hero() {
 }
 ```
 
-- [ ] **Step 2: Create `ServiceStrip.tsx` (bento grid of all 7 services)**
+- [ ] **Step 2: Create `ServiceGrid.tsx` (shared bento grid of all 7 services) and `ServiceStrip.tsx`**
+
+`ServiceGrid` is the reusable card grid — Task 9's `/services` overview page renders this same component instead of duplicating the markup:
+
+```tsx
+// src/components/services/ServiceGrid.tsx
+import Link from 'next/link'
+import { services } from '@/data/services'
+import BentoCard from '@/components/ui/BentoCard'
+
+export default function ServiceGrid() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {services.map((service, index) => (
+        <Link key={service.slug} href={`/services/${service.slug}`}>
+          <BentoCard span={index === 0 ? 'wide' : 'default'} className="h-full cursor-pointer">
+            <h3 className="text-xl font-semibold text-white mb-2">{service.title}</h3>
+            <p className="text-white/60 text-sm">{service.shortDescription}</p>
+          </BentoCard>
+        </Link>
+      ))}
+    </div>
+  )
+}
+```
 
 ```tsx
 // src/components/home/ServiceStrip.tsx
-import Link from 'next/link'
-import { services } from '@/data/services'
 import SectionHeading from '@/components/ui/SectionHeading'
-import BentoCard from '@/components/ui/BentoCard'
+import ServiceGrid from '@/components/services/ServiceGrid'
 
 export default function ServiceStrip() {
   return (
-    <section className="bg-thynkteck-black py-20 sm:py-28">
+    <section className="bg-thynkteck-soft-black py-20 sm:py-28">
       <div className="container mx-auto px-4 sm:px-6">
         <SectionHeading
           eyebrow="What we do"
           title="Every capability your product needs"
           description="From first sketch to production infrastructure, one team covers the full stack."
         />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {services.map((service, index) => (
-            <Link key={service.slug} href={`/services/${service.slug}`}>
-              <BentoCard span={index === 0 ? 'wide' : 'default'} className="h-full cursor-pointer">
-                <h3 className="text-xl font-semibold text-white mb-2">{service.title}</h3>
-                <p className="text-white/60 text-sm">{service.shortDescription}</p>
-              </BentoCard>
-            </Link>
-          ))}
-        </div>
+        <ServiceGrid />
       </div>
     </section>
   )
@@ -1526,7 +1540,7 @@ export default function FeaturedWork() {
   const featured = projects.slice(0, 3)
 
   return (
-    <section className="bg-thynkteck-soft-black py-20 sm:py-28">
+    <section className="bg-thynkteck-black py-20 sm:py-28">
       <div className="container mx-auto px-4 sm:px-6">
         <SectionHeading eyebrow="Selected work" title="Recent projects" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
@@ -1571,7 +1585,7 @@ const stats = [
 
 export default function StatsBar() {
   return (
-    <section className="bg-thynkteck-black py-16 sm:py-20 border-y border-white/10">
+    <section className="bg-thynkteck-soft-black py-16 sm:py-20 border-y border-white/10">
       <div className="container mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
         {stats.map((stat) => (
           <StatCounter key={stat.label} {...stat} />
@@ -1594,7 +1608,7 @@ import BentoCard from '@/components/ui/BentoCard'
 
 export default function TestimonialsSection() {
   return (
-    <section className="bg-thynkteck-soft-black py-20 sm:py-28">
+    <section className="bg-thynkteck-black py-20 sm:py-28">
       <div className="container mx-auto px-4 sm:px-6">
         <SectionHeading eyebrow="Client feedback" title="What clients say" align="center" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -1693,7 +1707,7 @@ import BentoCard from '@/components/ui/BentoCard'
 
 export default function TeamGrid() {
   return (
-    <section className="bg-thynkteck-soft-black py-20 sm:py-28">
+    <section className="bg-thynkteck-black py-20 sm:py-28">
       <div className="container mx-auto px-4 sm:px-6">
         <SectionHeading eyebrow="Our team" title="The people behind the work" />
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
@@ -1729,7 +1743,7 @@ const values = [
 
 export default function ValuesGrid() {
   return (
-    <section className="bg-thynkteck-black py-20 sm:py-28">
+    <section className="bg-thynkteck-soft-black py-20 sm:py-28">
       <div className="container mx-auto px-4 sm:px-6">
         <SectionHeading eyebrow="How we work" title="What we optimize for" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -1814,19 +1828,17 @@ git commit -m "feat: add About page with values and team grid"
 - Create: `src/components/services/ServiceDetailTemplate.tsx`
 
 **Interfaces:**
-- Consumes: `services` (Task 2), `getRelatedProjects` (Task 3), `projects` (Task 2), `SectionHeading`, `BentoCard`, `Button` (Task 4), `Navigation` (Task 5), `Footer` (Task 6).
+- Consumes: `services` (Task 2), `getRelatedProjects` (Task 3), `projects` (Task 2), `SectionHeading`, `BentoCard`, `Button` (Task 4), `ServiceGrid` (Task 7), `Navigation` (Task 5), `Footer` (Task 6).
 - Produces: `/services` and `/services/[slug]` routes for all 7 service slugs — linked from `Navigation` (Task 5) and `ServiceStrip` (Task 7).
 
 - [ ] **Step 1: Create `src/app/services/page.tsx`**
 
 ```tsx
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import SectionHeading from '@/components/ui/SectionHeading'
-import BentoCard from '@/components/ui/BentoCard'
-import { services } from '@/data/services'
+import ServiceGrid from '@/components/services/ServiceGrid'
 
 export const metadata: Metadata = {
   title: 'Services — Thynkteck',
@@ -1844,16 +1856,7 @@ export default function ServicesPage() {
             title="Everything your product needs, under one roof"
             description="Seven core capabilities that cover a project from first concept through ongoing support."
           />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {services.map((service, index) => (
-              <Link key={service.slug} href={`/services/${service.slug}`}>
-                <BentoCard span={index === 0 ? 'wide' : 'default'} className="h-full cursor-pointer">
-                  <h3 className="text-xl font-semibold text-white mb-2">{service.title}</h3>
-                  <p className="text-white/60 text-sm">{service.shortDescription}</p>
-                </BentoCard>
-              </Link>
-            ))}
-          </div>
+          <ServiceGrid />
         </div>
       </section>
       <Footer />
@@ -1923,7 +1926,7 @@ export default function ServiceDetailTemplate({ service, relatedProjects }: Serv
       </section>
 
       {relatedProjects.length > 0 && (
-        <section className="bg-thynkteck-soft-black py-20 sm:py-28">
+        <section className="bg-thynkteck-soft-black py-20 sm:py-28 border-b border-white/10">
           <div className="container mx-auto px-4 sm:px-6">
             <SectionHeading eyebrow="Related work" title="Recent projects in this area" />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -2185,7 +2188,7 @@ export default function ProjectDetailTemplate({ project, nextProject }: ProjectD
         </div>
       </section>
 
-      <section className="bg-thynkteck-black py-16 sm:py-20">
+      <section className="bg-thynkteck-black py-16 sm:py-20 border-b border-white/10">
         <div className="container mx-auto px-4 sm:px-6">
           <SectionHeading eyebrow="Tech stack" title="Built with" />
           <div className="flex flex-wrap gap-3">

@@ -1,24 +1,20 @@
 import Navigation from '@/components/Navigation'
-import HeroSection from '@/components/HeroSection'
-import AboutSection from '@/components/AboutSection'
-import ExpertiseSection from '@/components/ExpertiseSection'
-import ServicesSection from '@/components/ServicesSection'
-import WorkSection from '@/components/WorkSection'
-import TechStackSection from '@/components/TechStackSection'
-import FAQSection from '@/components/FAQSection'
+import Hero from '@/components/home/Hero'
+import ServiceStrip from '@/components/home/ServiceStrip'
+import FeaturedWork from '@/components/home/FeaturedWork'
+import StatsBar from '@/components/home/StatsBar'
+import TestimonialsSection from '@/components/home/TestimonialsSection'
 import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
     <main>
       <Navigation />
-      <HeroSection />
-      <AboutSection />
-      <ExpertiseSection />
-      <ServicesSection />
-      <WorkSection />
-      <TechStackSection />
-      <FAQSection />
+      <Hero />
+      <ServiceStrip />
+      <FeaturedWork />
+      <StatsBar />
+      <TestimonialsSection />
       <Footer />
     </main>
   )
