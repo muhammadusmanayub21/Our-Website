@@ -15,9 +15,9 @@ export default function TeamGrid() {
               <div className="relative w-16 h-16 rounded-full overflow-hidden bg-thynkteck-black mb-4">
                 <Image src={member.photo} alt={member.name} fill className="object-cover" />
               </div>
-              <h3 className="text-white font-semibold">{member.name}</h3>
-              <p className="text-thynkteck-blue text-sm mb-2">{member.role}</p>
-              <p className="text-white/60 text-sm">{member.bio}</p>
+              <h3 className="text-white font-semibold text-subhead">{member.name}</h3>
+              <p className="text-thynkteck-blue text-caption mb-2">{member.role}</p>
+              <p className="text-white/60 text-caption">{member.bio}</p>
             </BentoCard>
           ))}
         </div>

@@ -28,7 +28,7 @@ export default function ContactPage() {
           <ContactForm />
         </div>
       </section>
-      <Footer />
+      <Footer showContactForm={false} />
     </main>
   )
 }

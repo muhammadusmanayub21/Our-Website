@@ -22,10 +22,10 @@ export default function FeaturedWork() {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <span className="text-xs text-thynkteck-blue font-semibold uppercase tracking-wide">
+              <span className="text-caption text-thynkteck-blue font-semibold uppercase tracking-wide">
                 {project.category}
               </span>
-              <h3 className="text-lg font-semibold text-white mt-1">{project.title}</h3>
+              <h3 className="text-subhead font-semibold text-white mt-1">{project.title}</h3>
             </Link>
           ))}
         </div>

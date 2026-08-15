@@ -35,7 +35,7 @@ export default function WorkGrid({ projects }: WorkGridProps) {
               type="button"
               onClick={() => setActiveCategory(category)}
               aria-pressed={isActive}
-              className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+              className={`rounded-full border px-4 py-2 text-nav font-medium transition-colors ${
                 isActive
                   ? 'border-thynkteck-blue bg-thynkteck-blue text-white'
                   : 'border-white/20 text-white/70 hover:border-thynkteck-blue hover:text-white'
@@ -58,11 +58,11 @@ export default function WorkGrid({ projects }: WorkGridProps) {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
-            <span className="text-xs text-thynkteck-blue font-semibold uppercase tracking-wide">
+            <span className="text-caption text-thynkteck-blue font-semibold uppercase tracking-wide">
               {project.category}
             </span>
-            <h3 className="text-lg font-semibold text-white mt-1">{project.title}</h3>
-            <p className="text-white/50 text-sm">{project.industry}</p>
+            <h3 className="text-subhead font-semibold text-white mt-1">{project.title}</h3>
+            <p className="text-white/50 text-caption">{project.industry}</p>
           </Link>
         ))}
       </div>

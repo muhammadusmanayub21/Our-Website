@@ -75,11 +75,11 @@ export default function ProcessSection() {
             className="relative shrink-0 w-full md:w-28 py-6 md:py-0 flex items-center justify-center"
             style={{ background: 'linear-gradient(160deg, #0B35FA 0%, #061c85 55%, #05061a 100%)' }}
           >
-            <span className="text-white font-bold tracking-[0.4em] uppercase text-sm md:hidden">
+            <span className="text-white font-bold tracking-[0.4em] uppercase text-caption md:hidden">
               Approach
             </span>
             <span
-              className="hidden md:block text-white font-bold tracking-[0.5em] uppercase text-2xl whitespace-nowrap"
+              className="hidden md:block text-white font-bold tracking-[0.5em] uppercase text-subhead whitespace-nowrap"
               style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
             >
               Approach
@@ -117,11 +117,11 @@ export default function ProcessSection() {
                       </svg>
                     </div>
                     <div className="pt-1">
-                      <span className="block text-xs font-semibold tracking-widest text-white/30 mb-1">
+                      <span className="block text-caption font-semibold tracking-widest text-white/30 mb-1">
                         0{index + 1}
                       </span>
-                      <h3 className="text-lg font-semibold text-white mb-1.5">{step.title}</h3>
-                      <p className="text-sm text-white/60 leading-relaxed max-w-md">{step.description}</p>
+                      <h3 className="text-subhead font-semibold text-white mb-1.5">{step.title}</h3>
+                      <p className="text-caption text-white/60 leading-relaxed max-w-md">{step.description}</p>
                     </div>
                   </motion.div>
                 ))}

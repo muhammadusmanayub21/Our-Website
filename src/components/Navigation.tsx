@@ -28,8 +28,23 @@ const Navigation = () => {
   return (
     <nav className="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-5xl px-4">
       <div className="bg-thynkteck-soft-black/90 backdrop-blur border border-white/10 rounded-full px-4 sm:px-6 py-2.5 sm:py-3 shadow-lg flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 shrink-0">
-          <Image src="/logo/thynkteck-mark-white.png" alt="Thynkteck" width={32} height={32} />
+        <Link href="/" className="flex items-center shrink-0 min-w-0" aria-label="Thynkteck home">
+          <Image
+            src="/logo/thynkteck-icon-transparent.png"
+            alt=""
+            width={36}
+            height={36}
+            className="h-8 w-8 sm:hidden object-contain"
+            priority
+          />
+          <Image
+            src="/logo/thynkteck-wordmark-transparent.png"
+            alt="Thynkteck"
+            width={160}
+            height={42}
+            className="hidden sm:block h-6 md:h-7 w-auto object-contain"
+            priority
+          />
         </Link>
 
         <ul className="hidden md:flex items-center gap-6">
@@ -40,7 +55,7 @@ const Navigation = () => {
               onMouseEnter={() => item.children && setOpenDropdown(item.name)}
               onMouseLeave={() => item.children && setOpenDropdown(null)}
             >
-              <Link href={item.href} className="text-sm font-medium text-white/80 hover:text-white transition-colors">
+              <Link href={item.href} className="text-nav font-medium text-white/80 hover:text-white transition-colors">
                 {item.name}
               </Link>
               {item.children && openDropdown === item.name && (
@@ -49,7 +64,7 @@ const Navigation = () => {
                     <li key={child.href}>
                       <Link
                         href={child.href}
-                        className="block rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-white"
+                        className="block rounded-lg px-3 py-2 text-nav text-white/80 hover:bg-white/5 hover:text-white"
                       >
                         {child.name}
                       </Link>
@@ -63,7 +78,7 @@ const Navigation = () => {
 
         <Link
           href="/contact"
-          className="hidden md:inline-flex bg-thynkteck-blue text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-600 transition-colors"
+          className="hidden md:inline-flex bg-thynkteck-blue text-white px-4 py-2 rounded-full text-nav font-semibold hover:bg-blue-600 transition-colors"
         >
           Contact
         </Link>
@@ -94,7 +109,7 @@ const Navigation = () => {
                     <Link
                       key={child.href}
                       href={child.href}
-                      className="text-sm text-white/70"
+                      className="text-nav text-white/70"
                       onClick={() => setMobileOpen(false)}
                     >
                       {child.name}
@@ -106,7 +121,7 @@ const Navigation = () => {
           ))}
           <Link
             href="/contact"
-            className="mt-3 block text-center bg-thynkteck-blue text-white px-4 py-2 rounded-full text-sm font-semibold"
+            className="mt-3 block text-center bg-thynkteck-blue text-white px-4 py-2 rounded-full text-nav font-semibold"
             onClick={() => setMobileOpen(false)}
           >
             Contact

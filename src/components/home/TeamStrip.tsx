@@ -19,8 +19,8 @@ export default function TeamStrip() {
               <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full overflow-hidden bg-thynkteck-black border border-white/10 mb-4">
                 <Image src={member.photo} alt={member.name} fill className="object-cover" />
               </div>
-              <h3 className="text-white font-semibold text-sm">{member.name}</h3>
-              <p className="text-thynkteck-blue text-xs mt-1">{member.role}</p>
+              <h3 className="text-white font-semibold text-nav">{member.name}</h3>
+              <p className="text-thynkteck-blue text-caption mt-1">{member.role}</p>
             </div>
           ))}
         </div>

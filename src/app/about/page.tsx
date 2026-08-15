@@ -17,13 +17,13 @@ export default function AboutPage() {
       <section className="relative bg-thynkteck-black pt-40 pb-20 sm:pt-48 sm:pb-28 overflow-hidden">
         <CircuitMotif className="absolute -right-16 -top-10 w-72 h-72 sm:w-96 sm:h-96 pointer-events-none" />
         <div className="container mx-auto px-4 sm:px-6 max-w-3xl relative z-10">
-          <span className="inline-block text-thynkteck-blue text-sm font-semibold tracking-widest uppercase mb-4">
+          <span className="inline-block text-thynkteck-blue text-eyebrow mb-4">
             About Thynkteck
           </span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-page font-bold text-white mb-6">
             One team, every discipline your product needs
           </h1>
-          <p className="text-lg text-white/70">
+          <p className="text-body-lg text-white/70">
             Placeholder company story — replace with Thynkteck&rsquo;s real founding story, mission, and
             what makes the team&rsquo;s approach different once available.
           </p>

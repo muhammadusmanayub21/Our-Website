@@ -19,10 +19,20 @@ export async function POST(request: Request) {
     data === null ||
     typeof (data as Record<string, unknown>).name !== 'string' ||
     typeof (data as Record<string, unknown>).email !== 'string' ||
+    typeof (data as Record<string, unknown>).phone !== 'string' ||
+    typeof (data as Record<string, unknown>).company !== 'string' ||
+    typeof (data as Record<string, unknown>).region !== 'string' ||
+    typeof (data as Record<string, unknown>).service !== 'string' ||
     typeof (data as Record<string, unknown>).message !== 'string'
   ) {
     return NextResponse.json(
-      { success: false, errors: { message: 'Missing or invalid required fields: name, email, message must be strings.' } },
+      {
+        success: false,
+        errors: {
+          message:
+            'Missing or invalid required fields: name, email, phone, company, region, service, message must be strings.',
+        },
+      },
       { status: 400 }
     )
   }
@@ -59,8 +69,13 @@ export async function POST(request: Request) {
       text: [
         `Name: ${typedData.name}`,
         `Email: ${typedData.email}`,
-        typedData.company ? `Company: ${typedData.company}` : null,
-        typedData.service ? `Service: ${typedData.service}` : null,
+        `Phone: ${typedData.phone}`,
+        `Company: ${typedData.company}`,
+        typedData.companyUrl?.trim() ? `Company URL: ${typedData.companyUrl.trim()}` : null,
+        `Region: ${typedData.region}`,
+        `Service: ${typedData.service}`,
+        `Marketing email: ${typedData.marketingEmail ? 'Yes' : 'No'}`,
+        `Marketing SMS: ${typedData.marketingSms ? 'Yes' : 'No'}`,
         '',
         typedData.message,
       ]

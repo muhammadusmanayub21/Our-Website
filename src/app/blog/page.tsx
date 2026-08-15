@@ -24,12 +24,12 @@ export default function BlogPage() {
             {sorted.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`}>
                 <BentoCard className="h-full cursor-pointer">
-                  <span className="text-xs text-thynkteck-blue font-semibold uppercase tracking-wide">
+                  <span className="text-caption text-thynkteck-blue font-semibold uppercase tracking-wide">
                     {post.category}
                   </span>
-                  <h3 className="text-xl font-semibold text-white mt-2 mb-2">{post.title}</h3>
-                  <p className="text-white/60 text-sm mb-3">{post.excerpt}</p>
-                  <span className="text-white/40 text-xs">
+                  <h3 className="text-subhead font-semibold text-white mt-2 mb-2">{post.title}</h3>
+                  <p className="text-white/60 text-caption mb-3">{post.excerpt}</p>
+                  <span className="text-white/40 text-caption">
                     {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                   </span>
                 </BentoCard>

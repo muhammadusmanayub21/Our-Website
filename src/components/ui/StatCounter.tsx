@@ -32,10 +32,10 @@ export default function StatCounter({ value, suffix = '', label }: StatCounterPr
 
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-      <span ref={ref} className="block text-4xl sm:text-5xl font-bold text-white">
+      <span ref={ref} className="block text-stat font-bold text-white">
         0{suffix}
       </span>
-      <span className="mt-2 block text-sm text-white/60">{label}</span>
+      <span className="mt-2 block text-caption text-white/60">{label}</span>
     </motion.div>
   )
 }

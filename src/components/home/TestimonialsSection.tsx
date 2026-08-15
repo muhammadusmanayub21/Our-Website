@@ -10,10 +10,10 @@ export default function TestimonialsSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((testimonial) => (
             <BentoCard key={testimonial.author}>
-              <p className="text-white/80 mb-6">&ldquo;{testimonial.quote}&rdquo;</p>
+              <p className="text-body text-white/80 mb-6">&ldquo;{testimonial.quote}&rdquo;</p>
               <div>
-                <span className="block text-white font-semibold text-sm">{testimonial.author}</span>
-                <span className="block text-white/50 text-sm">
+                <span className="block text-white font-semibold text-nav">{testimonial.author}</span>
+                <span className="block text-white/50 text-caption">
                   {testimonial.role}, {testimonial.company}
                 </span>
               </div>

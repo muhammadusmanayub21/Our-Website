@@ -7,7 +7,6 @@ import FeaturedWork from '@/components/home/FeaturedWork'
 import TeamStrip from '@/components/home/TeamStrip'
 import StatsBar from '@/components/home/StatsBar'
 import TestimonialsSection from '@/components/home/TestimonialsSection'
-import ContactCTA from '@/components/home/ContactCTA'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -22,7 +21,6 @@ export default function Home() {
       <TeamStrip />
       <StatsBar />
       <TestimonialsSection />
-      <ContactCTA />
       <Footer />
     </main>
   )

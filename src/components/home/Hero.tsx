@@ -51,13 +51,13 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <span className="inline-block text-thynkteck-blue text-sm font-semibold tracking-widest uppercase mb-4">
+            <span className="inline-block text-thynkteck-blue text-eyebrow mb-4">
               Web · App · AI · Design
             </span>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-[1.05] mb-6">
+            <h1 className="text-hero font-bold text-white mb-6">
               We build the software your industry actually needs
             </h1>
-            <p className="text-lg sm:text-xl text-white/70 mb-8 max-w-xl">
+            <p className="text-body-lg text-white/70 mb-8 max-w-xl">
               Thynkteck is a full-service digital agency: web and app development, UI/UX and branding,
               AI and automation, IT consulting, Shopify and WordPress — under one roof.
             </p>
@@ -75,10 +75,10 @@ export default function Hero() {
         <div className="container mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
           {mantra.map((word, i) => (
             <span key={word} className="flex items-center gap-3">
-              <span className="text-xs sm:text-sm font-semibold tracking-[0.3em] uppercase text-white/50">
+              <span className="text-caption font-semibold tracking-[0.3em] uppercase text-white/50">
                 {word}
               </span>
-              {i < mantra.length - 1 && <span className="text-thynkteck-blue text-xs">•</span>}
+              {i < mantra.length - 1 && <span className="text-thynkteck-blue text-caption">•</span>}
             </span>
           ))}
         </div>

@@ -14,9 +14,9 @@ export default function NotFound() {
       <Navigation />
       <section className="bg-thynkteck-black pt-40 pb-20 sm:pt-48 sm:pb-28">
         <div className="container mx-auto px-4 sm:px-6">
-          <span className="text-sm font-semibold uppercase tracking-wide text-thynkteck-blue">404</span>
-          <h1 className="mt-3 text-4xl sm:text-5xl font-bold text-white">Page not found</h1>
-          <p className="mt-4 max-w-xl text-white/60">
+          <span className="text-eyebrow text-thynkteck-blue">404</span>
+          <h1 className="mt-3 text-page font-bold text-white">Page not found</h1>
+          <p className="mt-4 max-w-xl text-body text-white/60">
             The page you were looking for doesn&rsquo;t exist or may have moved. Head back to the
             homepage to pick up where you left off.
           </p>

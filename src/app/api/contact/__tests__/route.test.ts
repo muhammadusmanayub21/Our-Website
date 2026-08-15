@@ -20,9 +20,14 @@ function makeRequest(body: unknown) {
 const validBody = {
   name: 'Jane Doe',
   email: 'jane@example.com',
+  phone: '+1 555 123 4567',
   company: 'Acme Co',
-  service: 'web-app-development',
+  companyUrl: 'https://acme.example',
+  region: 'USA',
+  service: 'Web Development',
   message: 'We would like to discuss a new project with your team.',
+  marketingEmail: true,
+  marketingSms: false,
 }
 
 describe('POST /api/contact', () => {

@@ -13,7 +13,7 @@ export default function AboutTeaser() {
               eyebrow="Who we are"
               title="A full-service team, not a patchwork of freelancers"
             />
-            <p className="text-base sm:text-lg text-white/70 mb-8 max-w-lg">
+            <p className="text-body-lg text-white/70 mb-8 max-w-lg">
               Thynkteck brings web and app development, design, AI, and IT consulting under one roof —
               so your project moves through one accountable team instead of getting stitched together
               across vendors.

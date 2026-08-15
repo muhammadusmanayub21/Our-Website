@@ -2,6 +2,102 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (min-width: 640px) {
+    html {
+      font-size: 16.5px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: 17px;
+    }
+  }
+
+  body {
+    font-size: clamp(1rem, 0.35vw + 0.95rem, 1.125rem);
+    line-height: 1.65;
+    @apply text-white antialiased;
+  }
+}
+
+@layer components {
+  .text-hero {
+    font-size: clamp(2.5rem, 6.2vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .text-page {
+    font-size: clamp(2rem, 4.8vw, 3.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .text-section {
+    font-size: clamp(1.75rem, 3.6vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+
+  .text-subhead {
+    font-size: clamp(1.125rem, 1.8vw, 1.5rem);
+    line-height: 1.35;
+  }
+
+  .text-body {
+    font-size: clamp(1rem, 0.35vw + 0.95rem, 1.125rem);
+    line-height: 1.65;
+  }
+
+  .text-body-lg {
+    font-size: clamp(1.0625rem, 0.5vw + 1rem, 1.25rem);
+    line-height: 1.6;
+  }
+
+  .text-caption {
+    font-size: clamp(0.75rem, 0.2vw + 0.72rem, 0.875rem);
+    line-height: 1.4;
+  }
+
+  .text-eyebrow {
+    font-size: clamp(0.75rem, 0.2vw + 0.72rem, 0.875rem);
+    line-height: 1.4;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .text-nav {
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  .text-stat {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .text-mantra {
+    font-size: clamp(2rem, 6vw, 3.75rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+
+  .text-footer-cta {
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+}
+
 @layer utilities {
   @keyframes fade-in-up {
     0% {

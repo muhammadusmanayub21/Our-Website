@@ -66,11 +66,11 @@ export default function ServiceGrid() {
                 {icons[service.slug]}
               </svg>
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">{service.title}</h3>
-            <p className="text-white/60 text-sm mb-5">{service.shortDescription}</p>
+            <h3 className="text-subhead font-semibold text-white mb-2">{service.title}</h3>
+            <p className="text-white/60 text-caption mb-5">{service.shortDescription}</p>
             <ul className="space-y-2">
               {service.capabilities.slice(0, 3).map((capability) => (
-                <li key={capability} className="flex items-start gap-2 text-sm text-white/70">
+                <li key={capability} className="flex items-start gap-2 text-caption text-white/70">
                   <span className="mt-1.5 w-1 h-1 rounded-full bg-thynkteck-blue shrink-0" />
                   {capability}
                 </li>

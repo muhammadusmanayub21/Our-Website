@@ -24,7 +24,7 @@ export default function StatsBar() {
             <StatCounter key={stat.label} {...stat} />
           ))}
         </div>
-        <p className="mt-10 text-xs text-white/40">Illustrative placeholder figures.</p>
+        <p className="mt-10 text-caption text-white/40">Illustrative placeholder figures.</p>
       </div>
     </section>
   )

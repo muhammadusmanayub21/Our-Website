@@ -16,8 +16,8 @@ export default function ValuesGrid() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {values.map((value) => (
             <BentoCard key={value.title}>
-              <h3 className="text-lg font-semibold text-white mb-2">{value.title}</h3>
-              <p className="text-white/60 text-sm">{value.description}</p>
+              <h3 className="text-subhead font-semibold text-white mb-2">{value.title}</h3>
+              <p className="text-white/60 text-caption">{value.description}</p>
             </BentoCard>
           ))}
         </div>

@@ -19,7 +19,7 @@ interface ClickButtonProps extends BaseProps, Omit<ButtonHTMLAttributes<HTMLButt
 type ButtonProps = LinkButtonProps | ClickButtonProps
 
 const baseClasses =
-  'inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-colors duration-200'
+  'inline-flex items-center justify-center rounded-full px-6 py-3 text-nav font-semibold transition-colors duration-200'
 
 const variantClasses: Record<NonNullable<BaseProps['variant']>, string> = {
   primary: 'bg-thynkteck-blue text-white hover:bg-blue-600',

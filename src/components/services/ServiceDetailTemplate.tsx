@@ -15,13 +15,13 @@ export default function ServiceDetailTemplate({ service, relatedProjects }: Serv
     <>
       <section className="bg-thynkteck-black pt-40 pb-20 sm:pt-48 sm:pb-28">
         <div className="container mx-auto px-4 sm:px-6 max-w-3xl">
-          <span className="inline-block text-thynkteck-blue text-sm font-semibold tracking-widest uppercase mb-4">
+          <span className="inline-block text-thynkteck-blue text-eyebrow mb-4">
             {service.title}
           </span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-page font-bold text-white mb-6">
             {service.shortDescription}
           </h1>
-          <p className="text-lg text-white/70 mb-8">{service.longDescription}</p>
+          <p className="text-body-lg text-white/70 mb-8">{service.longDescription}</p>
           <Button href="/contact">Talk to us about this</Button>
         </div>
       </section>
@@ -45,9 +45,9 @@ export default function ServiceDetailTemplate({ service, relatedProjects }: Serv
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {service.process.map((step, index) => (
               <BentoCard key={step.title}>
-                <span className="text-thynkteck-blue text-sm font-semibold">0{index + 1}</span>
-                <h3 className="text-lg font-semibold text-white mt-2 mb-2">{step.title}</h3>
-                <p className="text-white/60 text-sm">{step.description}</p>
+                <span className="text-thynkteck-blue text-caption font-semibold">0{index + 1}</span>
+                <h3 className="text-subhead font-semibold text-white mt-2 mb-2">{step.title}</h3>
+                <p className="text-white/60 text-caption">{step.description}</p>
               </BentoCard>
             ))}
           </div>
@@ -69,7 +69,7 @@ export default function ServiceDetailTemplate({ service, relatedProjects }: Serv
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="text-lg font-semibold text-white">{project.title}</h3>
+                  <h3 className="text-subhead font-semibold text-white">{project.title}</h3>
                 </Link>
               ))}
             </div>
