@@ -29,10 +29,7 @@ const Navigation = () => {
     <nav className="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-5xl px-4">
       <div className="bg-thynkteck-soft-black/90 backdrop-blur border border-white/10 rounded-full px-4 sm:px-6 py-2.5 sm:py-3 shadow-lg flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 shrink-0">
-          <Image src="/logo/thynkteck-icon-white.png" alt="Thynkteck" width={28} height={28} />
-          <span className="hidden sm:inline text-white font-bold">
-            Thynk<span className="font-normal text-white/70">teck</span>
-          </span>
+          <Image src="/logo/thynkteck-mark-white.png" alt="Thynkteck" width={32} height={32} />
         </Link>
 
         <ul className="hidden md:flex items-center gap-6">
